@@ -15,6 +15,16 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    
+    <q-page-sticky expand position="bottom">
+      <q-layout-footer v-model="footer">
+        <q-toolbar color="amber-8">
+          <q-toolbar-title>
+            HomeApp
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-layout-footer>
+    </q-page-sticky>
   </q-layout>
 </template>
 
