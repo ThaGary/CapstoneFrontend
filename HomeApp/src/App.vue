@@ -12,6 +12,10 @@ export default {
 
 <style>
 body {
-  background-color: #fff3e2;
+  background-color: whitesmoke;
+  font-family: 'Fjalla One', sans-serif;
+}
+h1 {
+  color:orange;
 }
 </style>

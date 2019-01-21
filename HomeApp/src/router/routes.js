@@ -13,6 +13,22 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Chat.vue') }
     ]
+  },
+  {
+    path: '/edithome',
+    component: () => import('layouts/MyLayoutAway.vue'),
+    children: [
+      { path: '', component: () => import('pages/EditHome.vue') }
+    ]
+  },
+  { path: '',
+    component: () => import('pages/Login.vue')
+  },
+  { path: '/name',
+    component: () => import('pages/Name.vue')
+  },
+  { path: '/homecreate',
+    component: () => import('pages/HomeCreate.vue')
   }
 ]
 

@@ -4,7 +4,7 @@
       <q-toolbar color="amber-8">
         <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>
-          HomeApp
+          HomeDash
         </q-toolbar-title>
         <q-btn flat round dense icon="menu" />
       </q-toolbar>
@@ -13,14 +13,6 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-
-      <q-layout-footer v-model="footer">
-        <q-toolbar color="amber-8">
-          <q-toolbar-title>
-          </q-toolbar-title>
-          <i class="fas fa-comments fa-2x"></i>
-        </q-toolbar>
-      </q-layout-footer>
   </q-layout>
 </template>
 
@@ -40,9 +32,5 @@ export default {
 </script>
 
 <style>
-  q-layout-footer {
-    position: absolute;
-    bottom: 0px;
-    width: 100vw;
-  }
+
 </style>

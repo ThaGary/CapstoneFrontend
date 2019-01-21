@@ -3,6 +3,9 @@
     <Bills />
     <Bulletin class="text-bold q-ma-xs" />
     <Bulletin class="text-bold q-ma-xs" />
+    <q-page-sticky position="right" :offset="[18, 18]">
+      <q-btn fab-mini color="amber-8" icon="group" class="animate-pop" />
+    </q-page-sticky>
   </q-page>
 </template>
 
@@ -20,5 +23,10 @@ export default {
 </script>
 
 <style>
+q-page-sticky {
+    position: absolute;
+    bottom: 2em;
+    right: 2em;
+  }
 
 </style>
