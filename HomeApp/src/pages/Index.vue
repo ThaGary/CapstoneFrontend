@@ -2,9 +2,8 @@
   <q-page class="flex column items-center justify-start">
     <Bills />
     <Bulletin class="text-bold q-ma-xs" />
-    <Bulletin class="text-bold q-ma-xs" />
     <q-page-sticky position="right" :offset="[18, 18]">
-      <q-btn fab-mini color="amber-8" icon="group" class="animate-pop" />
+      <q-btn fab-mini color="amber-8" icon="group" class="animate-pop" @click="$router.push('/chat')"/>
     </q-page-sticky>
   </q-page>
 </template>

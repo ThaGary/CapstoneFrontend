@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
       <q-toolbar color="amber-8">
-        <img  alt="Capstone logo" src="~assets/whitelogo.svg">
+        <img  alt="Capstone logo" src="~assets/whitelogo.svg" @click="$router.push('/home')">
         <q-toolbar-title>
           HomeDash
         </q-toolbar-title>

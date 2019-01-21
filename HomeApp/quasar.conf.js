@@ -59,7 +59,8 @@ module.exports = function (ctx) {
         'QChatMessage',
         'QInput',
         'QField',
-        'QRadio'
+        'QRadio',
+        'QLayoutFooter'
       ],
       directives: [
         'Ripple'

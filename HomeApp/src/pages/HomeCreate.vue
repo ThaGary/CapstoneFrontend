@@ -10,7 +10,7 @@
         <q-input v-model="text" type="text" float-label="House Name" />
         <q-input v-model="password" type="password" float-label="House Password" no-pass-toggle />
         <div class="q-mt-xs buttons row justify-center">
-            <q-btn class="createhomebtn q-ma-md col-4" color="amber-8" label="Create" />
+            <q-btn class="createhomebtn q-ma-md col-4" color="amber-8" label="Create" @click="$router.push('/home')" />
         </div>
     </div>
   </div>

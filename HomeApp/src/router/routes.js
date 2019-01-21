@@ -29,6 +29,9 @@ const routes = [
   },
   { path: '/homecreate',
     component: () => import('pages/HomeCreate.vue')
+  },
+  { path: '/homejoin',
+    component: () => import('pages/HomeJoin.vue')
   }
 ]
 

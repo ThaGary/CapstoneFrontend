@@ -38,6 +38,13 @@
             </h6>
             <q-btn class="q-mb-xl" round size="1em" icon="add"></q-btn>
         </div>
+        <q-layout-footer v-model="footer">
+            <q-toolbar color="green">
+            <q-toolbar-title>
+                Update
+            </q-toolbar-title>
+            </q-toolbar>
+        </q-layout-footer>
     </div>
 </template>
 
@@ -51,5 +58,12 @@ export default {
   .subtitle {
       margin-top: -2em;
       color: #919191;
+  },
+  q-layout-footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
   }
 </style>
