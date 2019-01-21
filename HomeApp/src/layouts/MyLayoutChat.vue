@@ -18,7 +18,7 @@
         <q-toolbar color="amber-8">
           <q-toolbar-title>
           </q-toolbar-title>
-          <i class="fas fa-comments fa-2x"></i>
+          <i class="fas fa-chevron-circle-left"></i>
         </q-toolbar>
       </q-layout-footer>
   </q-layout>
