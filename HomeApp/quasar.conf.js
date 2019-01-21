@@ -60,7 +60,8 @@ module.exports = function (ctx) {
         'QInput',
         'QField',
         'QRadio',
-        'QLayoutFooter'
+        'QLayoutFooter',
+        'QSlider'
       ],
       directives: [
         'Ripple'

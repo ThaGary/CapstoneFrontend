@@ -2,11 +2,11 @@
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
       <q-toolbar color="amber-8">
-        <img  alt="Capstone logo" src="~assets/whitelogo.svg" @click="$router.push('/home')">
+        <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>
-          HomeDash
+          HomeHub
         </q-toolbar-title>
-        <q-btn flat round dense icon="menu" />
+        <i class="fas fa-arrow-left" @click="$router.push('/home')"/>
       </q-toolbar>
     </q-layout-header>
 
