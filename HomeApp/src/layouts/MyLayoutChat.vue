@@ -17,8 +17,9 @@
       <q-layout-footer v-model="footer">
         <q-toolbar color="amber-8">
           <q-toolbar-title>
+            <q-input class="fixedTextInput" prefix="chat:" inverted color="white" v-model="text" stack-label="" />
           </q-toolbar-title>
-          <i class="fas fa-chevron-circle-left"></i>
+          <i class="fas fa-share"></i>
         </q-toolbar>
       </q-layout-footer>
   </q-layout>

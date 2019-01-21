@@ -56,7 +56,8 @@ module.exports = function (ctx) {
         'QCollapsible',
         'QItemSide',
         'QChip',
-        'QChatMessage'
+        'QChatMessage',
+        'QInput'
       ],
       directives: [
         'Ripple'
