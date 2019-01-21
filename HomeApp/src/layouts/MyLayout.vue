@@ -4,7 +4,7 @@
       <q-toolbar color="amber-8">
         <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>
-          HomeHub
+          HappyHouse
         </q-toolbar-title>
         <q-btn flat round dense icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
         <q-layout-drawer side="right" v-model="rightDrawerOpen">

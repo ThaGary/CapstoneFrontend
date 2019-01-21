@@ -6,7 +6,7 @@
         style="width:30vw;max-width:150px;"
       >
     </p>
-    <h1>HomeHub</h1>
+    <h1>HappyHouse</h1>
     <div class="col-10 q-mx-xl">
         <q-input v-model="email" type="email" float-label="Email" />
         <q-input v-model="password" type="password" float-label="password" no-pass-toggle />
