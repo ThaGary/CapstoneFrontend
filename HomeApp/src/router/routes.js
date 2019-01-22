@@ -22,6 +22,9 @@ const routes = [
     ]
   },
   { path: '',
+    component: () => import('pages/Splash.vue')
+  },
+  { path: '/login',
     component: () => import('pages/Login.vue')
   },
   { path: '/name',

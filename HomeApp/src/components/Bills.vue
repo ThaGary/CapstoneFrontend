@@ -1,11 +1,11 @@
 <template>
-    <div class="row q-ma-xs justify-center">
-      <q-chip avatar="assets/home-solid.svg" color="pink" text-color="white" class="text-bold q-ma-xs shadow-4">$400</q-chip>
-      <q-chip avatar="assets/fire-alt-solid.svg" color="red" text-color="white" class="text-bold q-ma-xs shadow-4">$21</q-chip>
-      <q-chip avatar="assets/tint-solid.svg" color="blue-11" text-color="white" class="text-bold q-ma-xs shadow-4">$20</q-chip>
-      <q-chip avatar="assets/bolt-solid.svg" color="black" text-color="white" class="text-bold q-ma-xs shadow-4">$69</q-chip>
-      <q-chip avatar="assets/wifi-solid.svg" color="orange" text-color="white" class="text-bold q-ma-xs shadow-4">$69</q-chip>
-      <q-chip avatar="assets/carrot-solid.svg" color="green" text-color="white" class="text-bold q-ma-xs shadow-4">$21</q-chip>
+    <div class="column q-ma-xs justify-center">
+      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="orange" value="false" name="home" :labels="{checked: '$400', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
+      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="red" value="false" name="gas" :labels="{checked: '$21', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
+      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="blue" value="false" name="water" :labels="{checked: '$20', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
+      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="violet" value="false" name="power" :labels="{checked: '$69', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
+      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="purple" value="false" name="wifi" :labels="{checked: '$30', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
+      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="green" value="false" name="groceries" :labels="{checked: '$40', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
     </div>
 </template>
 
@@ -16,4 +16,7 @@ export default {
 </script>
 
 <style scoped>
+.vue-js-switch#changed-font {
+  font-size: 1em;
+}
 </style>
