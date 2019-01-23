@@ -32,7 +32,4 @@ q-page-sticky {
     bottom: 2em;
     right: 2em;
 }
-.v-switch-button {
-  background-image: url(/assets/power.svg)!important;
-}
 </style>

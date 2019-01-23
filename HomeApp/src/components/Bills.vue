@@ -1,22 +1,44 @@
 <template>
-    <div class="column q-ma-xs justify-center">
-      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="orange" value="false" name="home" :labels="{checked: '$400', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
-      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="red" value="false" name="gas" :labels="{checked: '$21', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
-      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="blue" value="false" name="water" :labels="{checked: '$20', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
-      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="violet" value="false" name="power" :labels="{checked: '$69', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
-      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="purple" value="false" name="wifi" :labels="{checked: '$30', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
-      <toggle-button class="text-bold q-ma-xs" id="changed-font" color="green" value="false" name="groceries" :labels="{checked: '$40', unchecked: 'Paid'}" :width="85" :height="40" :speed="480" />
+    <div v-if="posts && posts.length" class="column q-ma-xs justify-center">
+      <q-btn v-for="posts of posts" :key="posts.id" round class="q-ma-xs" :style="{backgroundColor: posts.icon_color, color: 'white'}" @click="paid" :icon='posts.icon' />
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'Bills'
+  name: 'Bills',
+  data () {
+    return {
+      posts: [],
+      errors: []
+    }
+  },
+  methods: {
+    loadPosts () {
+      return axios.get('http://localhost:3003/bills/1/')
+    },
+
+    paid: function () {
+      for (var key in this.post) {
+        this.posts[key].icon = 'fas-bolt'
+      }
+      console.log('clicked', this.posts.length)
+    }
+  },
+  created () {
+    this.loadPosts()
+      .then(response => {
+        this.posts = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+  }
 }
 </script>
 
 <style scoped>
-.vue-js-switch#changed-font {
-  font-size: 1em;
-}
+
 </style>

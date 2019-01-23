@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ToggleButton from 'vue-js-toggle-button'
 import routes from './routes'
 
 Vue.use(VueRouter)
-Vue.use(ToggleButton)
 
 /*
  * If not building with SSR mode, you can

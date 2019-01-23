@@ -1,29 +1,37 @@
 <template>
-    <q-list class="column">
-      <q-collapsible class="col-10" icon="event_note" label="House Rules">
+    <q-list v-if="posts && posts.length" class="column">
+      <q-collapsible v-for="post of posts" :key="post.id" class="col-10" icon="event_note" :label="post.title">
         <div>
-          Content
-        </div>
-      </q-collapsible>
-      <q-collapsible class="col-10" icon="wifi" label="Wifi Pass">
-        <div>
-          Content
-        </div>
-      </q-collapsible>
-      <q-collapsible class="col-10" icon="autorenew" label="Recycling">
-        <div>
-          Content
+          {{ post.entry }}
         </div>
       </q-collapsible>
     </q-list>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'Bulletin'
+  name: 'Bulletin',
+  data () {
+    return {
+      posts: [],
+      errors: []
+    }
+  },
+
+  created () {
+    axios.get(`http://localhost:3003/bulletin`)
+      .then(response => {
+        this.posts = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+  }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
