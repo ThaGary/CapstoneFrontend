@@ -7,13 +7,17 @@
   "author": "ThaGary <garyanderson31591@gmail.com>",
   "private": true,
   "scripts": {
+    "start": "",
     "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "animate.css": "^3.7.0",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "socket.io-client": "^2.2.0",
+    "uws": "^99.0.0",
+    "vue-socket.io": "^3.0.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
@@ -21,7 +25,7 @@
     "eslint-config-standard": "^11.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",

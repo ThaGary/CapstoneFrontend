@@ -1,7 +1,6 @@
 <template>
     <div v-if="posts && posts.length" class="q-ma-xs row justify-center">
-      <q-btn v-for="posts of posts" :key="posts.id" size="1rem" round class="q-ma-xs" :style="{backgroundColor: '#f2a43a', color: 'white'}" :icon='posts.icon' />
-      <q-btn v-for="posts of posts" :key="posts.id" size="1.5rem" round class="q-ma-xs" :style="{backgroundColor: '#f2a43a', color: 'white'}" :icon='posts.icon' />
+      <q-btn v-for="posts of posts" :key="posts.id" size="1rem" class="q-ma-xs" :style="{backgroundColor: '#f2a43a', color: 'white'}" :icon='posts.icon' :label="`$`+(posts.amount/posts.number_housemates).toFixed(2)" />
     </div>
 </template>
 

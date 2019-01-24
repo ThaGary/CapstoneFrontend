@@ -1,99 +1,61 @@
 <template>
-    <div class="chat">
-        <q-chat-message
-            class="q-ma-md flex column"
-            v-for="(msg, index) in messages"
-            :key="`avatar-${index}`"
-            :label="msg.label"
-            :sent="(msg.members_id != 1) ? true : false"
-            :text-color="msg.textColor"
-            :bg-color="(msg.members_id != 1) ? `grey-3` : `amber-7`"
-            :name="msg.first_name"
-            :text="msg.text"
-            :stamp="msg.datetime"
-        />
-        <q-layout-footer v-model="footer">
-        <q-toolbar color="amber-8">
-          <q-toolbar-title>
-            <q-input class="fixedTextInput" prefix="chat:" inverted color="white" v-model="text" stack-label="" />
-          </q-toolbar-title>
-          <i class="fas fa-share"></i>
-        </q-toolbar>
-      </q-layout-footer>
-    </div>
+  <div class="card mt-3">
+      <div class="card-body">
+          <div class="card-title">
+              <h3>Chat Group</h3>
+              <hr>
+          </div>
+          <div class="card-body">
+              <div class="messages" v-for="(msg, index) in messages" :key="index">
+                  <p><span class="font-weight-bold">{{ msg.user }}: </span>{{ msg.message }}</p>
+              </div>
+          </div>
+      </div>
+      <div class="card-footer">
+          <form @submit.prevent="sendMessage">
+              <div class="gorm-group">
+                  <label for="user">User:</label>
+                  <input type="text" v-model="user" class="form-control">
+              </div>
+              <div class="gorm-group pb-3">
+                  <label for="message">Message:</label>
+                  <input type="text" v-model="message" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-success">Send</button>
+          </form>
+      </div>
+  </div>
 </template>
 
 <script>
+import io from 'socket.io-client'
+
 export default {
-  name: 'Chat',
-  methods: {},
   data () {
     return {
+      user: '',
       message: '',
-      yourID: 1,
-      messages: [
-        {
-          first_name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?And you?'],
-          datetime: 'May 31, 1991 9:00 PM',
-          members_id: 7,
-          house_id: 1
-        },
-        {
-          first_name: 'Gary',
-          text: ['hey everyone'],
-          datetime: 'May 31, 1991 9:00 PM',
-          members_id: 1,
-          house_id: 1
-        },
-        {
-          first_name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?And you?'],
-          datetime: 'May 31, 1991 9:00 PM',
-          members_id: 7,
-          house_id: 1
-        },
-        {
-          first_name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?And you?'],
-          datetime: 'May 31, 1991 9:00 PM',
-          members_id: 7,
-          house_id: 1
-        },
-        {
-          first_name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?And you?'],
-          datetime: 'May 31, 1991 9:00 PM',
-          members_id: 7,
-          house_id: 1
-        },
-        {
-          first_name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?And you?'],
-          datetime: 'May 31, 1991 9:00 PM',
-          members_id: 7,
-          house_id: 1
-        },
-        {
-          first_name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?And you?'],
-          datetime: 'May 31, 1991 9:00 PM',
-          members_id: 7,
-          house_id: 1
-        }
-      ]
+      messages: [{
+        user: 'gary',
+        message: 'hello'
+      }],
+      socket: io('localhost:3001')
     }
+  },
+  methods: {
+    sendMessage (e) {
+      e.preventDefault()
+      this.socket.emit('SEND_MESSAGE', {
+        user: this.user,
+        message: this.message
+      })
+      this.message = ''
+    }
+  },
+  mounted () {
+    this.socket.on('MESSAGE', (data) => {
+      this.messages = [...this.messages, data]
+    })
   }
 }
 </script>
-
-<style>
-q-chat-message {
-  height: 3em;
-}
-q-layout-footer {
-    position: absolute;
-    bottom: 0px;
-    width: 100vw;
-  }
-</style>
