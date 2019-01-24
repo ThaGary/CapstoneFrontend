@@ -1,9 +1,9 @@
 <template>
-  <q-page class="flex row items-center justify-center">
-    <Today class="col-10" />
-    <Bills class="col-3" />
-    <div class="text-thin col-8 column" >
-      <Bulletin class="text-bold q-ma-md" />
+  <q-page class="flex column">
+    <Today class="col-12 q-ma-md" />
+    <Bills class="col-12 q-ma-md" />
+    <div class="text-thin col-12 column" >
+      <Bulletin class="q-ma-md" />
     </div>
     <q-page-sticky position="right" :offset="[18, 18]">
       <q-btn fab-mini color="amber-8" icon="group" class="animate-pop" @click="$router.push('/chat')"/>

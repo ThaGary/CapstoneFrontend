@@ -19,7 +19,6 @@ export default {
       errors: []
     }
   },
-
   created () {
     axios.get(`http://localhost:3003/bulletin`)
       .then(response => {
