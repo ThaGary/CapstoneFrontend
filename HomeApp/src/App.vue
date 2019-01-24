@@ -12,8 +12,8 @@ export default {
 
 <style>
 body {
-  background-color: whitesmoke;
-  font-family: 'Fjalla One', sans-serif;
+  background-color: white;
+  /* font-family: 'Fjalla One', sans-serif; */
 }
 h1 {
   color:orange;
