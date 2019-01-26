@@ -1,7 +1,7 @@
 <template>
-  <div class="card mt-3">
-      <div class="card-body">
-          <div class="card-body">
+  <div id="msgbox" class="card mt-3">
+      <div id="msgbox" class="card-body">
+          <div id="msgbox" class="card-body">
               <div class="messages justify-center row q-ma-md" v-for="(msg, index) in messages" :key="index">
                   <div class="items-center row q-pt-md q-mr-xs">
                     <div class="textbox q-ml-xs">
@@ -77,6 +77,10 @@ export default {
   mounted () {
     this.socket.on('MESSAGE', (data) => {
       this.messages = [...this.messages, data]
+      this.$nextTick(function () {
+        var msgbox = document.getElementById('msgbox')
+        msgbox.scrollTop = msgbox.scrollHeight
+      })
     })
   }
 }
@@ -119,6 +123,11 @@ input {
 .text {
   font-weight: bold;
   font-size: 1em;
+}
+#msgbox {
+  height: 85vh;
+  max-width: 400px;
+  overflow-y: scroll;
 }
 
 @keyframes sent {
