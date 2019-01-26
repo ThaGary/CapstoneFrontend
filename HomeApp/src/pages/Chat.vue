@@ -1,7 +1,7 @@
 <template>
-  <div id="msgbox" class="card mt-3">
-      <div id="msgbox" class="card-body">
-          <div id="msgbox" class="card-body">
+  <div class="card mt-3">
+      <div class="card-body">
+          <div v-chat-scroll id="msgbox" class="card-body">
               <div class="messages justify-center row q-ma-md" v-for="(msg, index) in messages" :key="index">
                   <div class="items-center row q-pt-md q-mr-xs">
                     <div class="textbox q-ml-xs">
@@ -20,7 +20,7 @@
               Chat:
               <input type="text" class="form-control fixedTextInput" prefix="chat: " color="#f2a43a" v-model="text" />
             </q-toolbar-title>
-            <button type="Submit" v-on:click="pingServer()" @click="click">
+            <button type="Submit" class="btn" v-on:click="pingServer()" @click="click">
               <i class="fas fa-share"></i>
             </button>
           </q-toolbar>
@@ -30,9 +30,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import io from 'socket.io-client'
 import axios from 'axios'
+import VueChatScroll from 'vue-chat-scroll'
 
+Vue.use(VueChatScroll)
 export default {
   data () {
     return {
@@ -92,6 +95,10 @@ q-layout-footer {
     bottom: 0px;
     width: 100vw;
 }
+button {
+  background-color: transparent;
+  border:transparent
+}
 i {
   color: white;
 }
@@ -126,7 +133,6 @@ input {
 }
 #msgbox {
   height: 85vh;
-  max-width: 400px;
   overflow-y: scroll;
 }
 

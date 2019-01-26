@@ -143,7 +143,7 @@ export default {
   button {
       background-color: transparent;
       width: 100vw;
-      border: green;
+      border: transparent;
   }
   .green {
       color: green
