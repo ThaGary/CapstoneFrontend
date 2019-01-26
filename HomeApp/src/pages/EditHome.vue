@@ -45,8 +45,11 @@
             <h6 class="col-12 subtitle text-weight-thin">
                  Use Total we will do the math for you. Leave empty if does not apply.
             </h6>
-            <div class="q-mt-md row justify-center items-center" v-for="houseEdit of houseEdit" :key="houseEdit.id">
-                <q-input class="col-10" type="number" prefix="$" :value="houseEdit.amount" :float-label="houseEdit.name" :placeholder="houseEdit.amount" />
+            <div class="q-mt-md row justify-center items-center" v-for="(houseEdit, index) of houseEdit" :key="houseEdit.id">
+                <q-input class="col-8" type="number" prefix="$" :value="houseEdit.amount" v-model="amount[index]" :float-label="houseEdit.name" :placeholder="houseEdit.amount" />
+                <button class="col-2" @click="put(houseEdit.id)">
+                    <i :label="houseEdit.icon" class="green fas fa-check-circle" />
+                </button>
             </div>
         </div>
         <div v-if="post && post.length" class="col-10">
@@ -66,13 +69,6 @@
             </div>
             <q-btn class="q-mt-xl" round size="1em" icon="add"></q-btn>
         </div>
-        <q-layout-footer>
-            <q-toolbar color="green">
-            <q-toolbar-title>
-                Update
-            </q-toolbar-title>
-            </q-toolbar>
-        </q-layout-footer>
     </div>
 </template>
 
@@ -85,6 +81,7 @@ export default {
     return {
       marker: 6,
       post: [],
+      amount: 210,
       houseEdit: [
         {
           house_name: '',
@@ -100,6 +97,22 @@ export default {
         }
       ],
       errors: []
+    }
+  },
+  methods: {
+    put (id) {
+      var url = 'http://localhost:3002/bills/1/' + id
+      console.log('put', id, this.amount)
+      axios.put(url, {
+        amount: this.amount
+      })
+        .then(response => {
+          console.log(response, 'success')
+        })
+        .catch(error => {
+          console.log(error)
+          this.errors.push(error)
+        })
     }
   },
   created () {
@@ -126,5 +139,13 @@ export default {
   .name {
       min-width: 4em;
       text-align: right
+  }
+  button {
+      background-color: transparent;
+      width: 100vw;
+      border: green;
+  }
+  .green {
+      color: green
   }
 </style>
