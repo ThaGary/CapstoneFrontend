@@ -59,7 +59,7 @@ export default {
       this.text = ''
     },
     click () {
-      console.log(this.stamp, this.first_name, this.text, 'CLICKED')
+      console.log(this.stamp, this.member_id, this.text, 'CLICKED')
     },
     pingServer () {
       this.socket.emit('pingServer', 'PING')

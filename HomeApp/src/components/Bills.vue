@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="justify-center row" v-for="bills of bills" :key="bills.id" >
-            <q-btn @click="click" v-on:click="bills.paid = !bills.paid" size="1rem" rounded class="col-12 q-ma-xs" v-bind:class="[{ 'unpaid' : !bills.paid, 'paid' : bills.paid }]" :icon='bills.icon' v-bind:label="!bills.paid == true ?  `$`+(bills.amount/bills.number_housemates).toFixed(2) :  '✔'" />
+            <q-btn @click="put(bills.id, bills.paid = !bills.paid)" v-model="paid" size="1rem" rounded class="col-12 q-ma-xs" v-bind:class="[{ 'unpaid' : !bills.paid, 'paid' : bills.paid }]" :icon='bills.icon' v-bind:label="!bills.paid == true ?  `$`+(bills.amount/bills.number_housemates).toFixed(2) :  '✔'" />
         </div>
     </div>
 </template>
@@ -14,7 +14,8 @@ export default {
   data () {
     return {
       bills: [],
-      errors: []
+      errors: [],
+      paid: null
     }
   },
   methods: {
@@ -22,15 +23,26 @@ export default {
       console.log('fetching')
       return axios.get('http://localhost:3002/mybills/1/')
     },
-    click () {
-      console.log(this.datetime, 'CLICKED')
+    put (id, paid) {
+      var url = 'http://localhost:3002/bills/' + id
+      this.id = id
+      axios.put(url, {
+        paid: paid
+      })
+        .then(response => {
+          console.log(response, 'success')
+        })
+        .catch(error => {
+          console.log(error)
+          this.errors.push(error)
+        })
     }
   },
   created () {
     this.loadbills()
       .then(response => {
         this.bills = response.data
-        console.log(this.bills)
+        this.id = response.data.bills.id
       })
       .catch(e => {
         this.errors.push(e)
