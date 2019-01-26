@@ -68,7 +68,8 @@ module.exports = function (ctx) {
         'QCardMedia',
         'QCardSeparator',
         'QCardActions',
-        'QDatetime'
+        'QDatetime',
+        'QSelect'
       ],
       directives: [
         'Ripple'

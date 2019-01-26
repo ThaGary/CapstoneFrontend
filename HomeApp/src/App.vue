@@ -18,13 +18,4 @@ body {
 h1 {
   color:orange;
 }
-svg .white {
-  fill:#FFFFFF
-}
-svg .gray {
-  fill:#E0E0E0
-}
-svg .yellow {
-  fill:#FFEB3B
-}
 </style>

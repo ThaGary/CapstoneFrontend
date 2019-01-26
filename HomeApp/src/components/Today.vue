@@ -1,13 +1,14 @@
 <template>
     <q-card inline class="bigger q-mt-sm">
-      <q-card-media>
-        <img src="~assets/weather/sunny.svg" height="100px" >
-      </q-card-media>
       <q-card-title class="relative-position">
-        <div class="ellipsis">Hello</div>
+        <div class="ellipsis">{{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}</div>
+        <img :src="this.icon" />
+        <div slot="right" class="column items-start">
+          <span><q-icon class="q-mb-md" name="fas fa-temperature-high high" /> High {{maxTemp}}°F</span>
+          <span><q-icon name="fas fa-temperature-low low" /> Low {{minTemp}}°F</span>
+        </div>
       </q-card-title>
       <q-card-main class="text-faded">
-          Max {{maxTemp}}°
       </q-card-main>
     </q-card>
 </template>
@@ -21,6 +22,7 @@ export default {
     return {
       houseEdit: [],
       errors: [],
+      weather: '',
       currentTemp: '',
       minTemp: '',
       maxTemp: '',
@@ -30,7 +32,10 @@ export default {
       humidity: '',
       wind: '',
       overcast: '',
-      icon: ''
+      icon: '',
+      day: '',
+      month: '',
+      year: ''
     }
   },
   methods: {
@@ -39,6 +44,7 @@ export default {
       axios
         .get(url)
         .then(response => {
+          this.weather = response.data.weather.main
           this.currentTemp = response.data.main.temp
           this.minTemp = response.data.main.temp_min
           this.maxTemp = response.data.main.temp_max
@@ -46,23 +52,39 @@ export default {
           this.humidity = response.data.main.humidity + '%'
           this.wind = response.data.wind.speed + 'm/s'
           this.overcast = response.data.weather[0].description
-          this.icon = 'images/' + response.data.weather[0].icon.slice(0, 2) + '.svg'
+          this.icon = 'assets/weather/' + response.data.weather[0].icon.slice(0, 2) + '.svg'
           this.sunrise = new Date(response.data.sys.sunrise * 1000).toLocaleTimeString('en-GB').slice(0, 4)
           this.sunset = new Date(response.data.sys.sunset * 1000).toLocaleTimeString('en-GB').slice(0, 4)
         })
         .catch(error => {
           console.log(error)
         })
+    },
+    getDate () {
+      var day = new Date()
+      var month = day.getMonth() + 1
+      var year = day.getFullYear()
+      var date = year + '-' + month + '-' + day
+      var time = day.getHours() + ':' + day.getMinutes() + ':' + day.getSeconds()
+      var dateTime = date + ' ' + time
+      return dateTime
     }
   },
   beforeMount () {
     this.getWeather()
+    this.getDate()
   }
 }
 </script>
 
 <style scoped>
 img {
-    background-color: skyblue;
+    height: 3em;
+}
+.low {
+  color: lightblue
+}
+.high {
+  color:lightcoral
 }
 </style>

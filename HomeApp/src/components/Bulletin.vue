@@ -20,7 +20,7 @@ export default {
     }
   },
   created () {
-    axios.get(`http://localhost:3003/bulletin`)
+    axios.get(`http://localhost:3002/bulletin`)
       .then(response => {
         this.posts = response.data
       })

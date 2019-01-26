@@ -5,9 +5,16 @@
             <h6 class="subtitle text-weight-thin">
                  Let home know when information is updated.
             </h6>
-            <q-input v-model="text" type="text" :float-label="houseEdit[0].house_name" :placeholder="houseEdit[0].house_name" />
-            <q-input v-model="text" type="password" :float-label="houseEdit[0].password" no-pass-toggle :placeholder="houseEdit[0].password"/>
-            <q-input v-model="text" type="number" :float-label="houseEdit[0].zipcode" :placeholder="houseEdit[0].zipcode" />
+            <q-input type="text" :value="houseEdit[0].house_name" float-label="House Name" :placeholder="houseEdit[0].house_name" />
+            <q-input type="password" :value="houseEdit[0].password" float-label="House Password" no-pass-toggle :placeholder="houseEdit[0].password"/>
+            <q-select
+                :placeholder="houseEdit[0].trash_day"
+                :value="houseEdit[0].trash_day"
+                float-label="Trash Day"
+                radio
+                :options="selectOptions"
+            />
+            <q-input type="number" :value="houseEdit[0].zipcode" float-label="Zipcode" :placeholder="houseEdit[0].zipcode" />
             <span class="chip-container">
                 <h4>
                     Number of Housemates: {{ houseEdit[0].number_housemates }}
@@ -15,33 +22,34 @@
                 </span>
             <q-slider v-model="houseEdit[0].number_housemates" :min="0" :max="10" :step="1" label snap markers />
         </div>
-        <div class="trash col-12 q-pt-md">
-            <h3 class="text-weight-bolder">Trash Day</h3>
-            <q-radio class="q-ml-xs" v-model="option" val="Mon" color="amber" label="Mon" style="margin-left: 10px" />
-            <q-radio class="q-ml-xs" v-model="option" val="Tues" color="red" label="Tues" style="margin-left: 10px" />
-            <q-radio class="q-ml-xs" v-model="option" val="Wed" color="secondary" label="Wed" />
-            <q-radio class="q-ml-xs" v-model="option" val="Thur" color="amber" label="Thurs" style="margin-left: 10px" />
-            <q-radio class="q-ml-xs" v-model="option" val="Fri" color="red" label="Fri" style="margin-left: 10px" />
-            <q-radio class="q-ml-xs" v-model="option" val="Sat" color="secondary" label="Sat" />
-        </div>
-        <div v-if="houseEdit && houseEdit.length" class="bills col-10">
+        <div v-if="houseEdit && houseEdit.length" class="bills q-mb-xl col-12">
             <h3 class="col-12 text-weight-bolder">Update Bill Amount.</h3>
             <h6 class="col-12 subtitle text-weight-thin">
                  Use Total we will do the math for you. Leave empty if does not apply.
             </h6>
-            <div class=" row inputwithdate" v-for="houseEdit of houseEdit" :key="houseEdit.id">
-                <q-input class="col-7" prefix="$" v-model="text" :placeholder="houseEdit.amount" type="number" :float-label="houseEdit.name" />
-                <q-input class="col-3" v-model="day" :placeholder="houseEdit.day" type="number" :float-label="Date" />
+            <div class="text-weight-bolder q-mt-md row justify-center items-center" v-for="houseEdit of houseEdit" :key="houseEdit.id">
+                <span class="billInput justify-center row"><div class="name justify-end q-pt-xs">{{ houseEdit.name }} :</div><input class="input" type="number" :placeholder="houseEdit.amount" />
+                </span>
             </div>
         </div>
-        <div class="bulletin col-10">
+        <div v-if="post && post.length" class="col-10">
             <h3 class="col-12 text-weight-bolder">Bulletin Board</h3>
             <h6 class="col-12 subtitle text-weight-thin">
                  Add, Edit, Remove Post.
             </h6>
-            <q-btn class="q-mb-xl" round size="1em" icon="add"></q-btn>
+            <div class="q-mt-md row" v-for="post of post" :key="post.id">
+                <q-card inline class="bigger q-mt-sm">
+                    <q-card-title class="relative-position">
+                        <div class="ellipsis">{{ post.title }}</div>
+                    </q-card-title>
+                    <q-card-main class="text-faded">
+                        {{ post.entry }}
+                    </q-card-main>
+                </q-card>
+            </div>
+            <q-btn class="q-mt-xl" round size="1em" icon="add"></q-btn>
         </div>
-        <q-layout-footer v-model="footer">
+        <q-layout-footer>
             <q-toolbar color="green">
             <q-toolbar-title>
                 Update
@@ -58,7 +66,34 @@ export default {
   name: 'EditHome',
   data () {
     return {
+      selectOptions: [
+        {
+          label: 'Mon',
+          value: 'Mon'
+        },
+        {
+          label: 'Tue',
+          value: 'Tue'
+        },
+        {
+          label: 'Wed',
+          value: 'Wed'
+        },
+        {
+          label: 'Thu',
+          value: 'Thu'
+        },
+        {
+          label: 'Fri',
+          value: 'Fri'
+        },
+        {
+          label: 'Sat',
+          value: 'Sat'
+        }
+      ],
       marker: 6,
+      post: [],
       houseEdit: [
         {
           house_name: '',
@@ -77,7 +112,7 @@ export default {
     }
   },
   created () {
-    axios.get(`http://localhost:3003/house/1`)
+    axios.get('http://localhost:3002/house/1')
       .then(response => {
         this.houseEdit = response.data
       })
@@ -94,11 +129,11 @@ export default {
       margin-top: -2em;
       color: #919191;
   }
-  q-layout-footer {
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    height:30px;
-    width:100%;
+  .input {
+      border: 1px solid #f2a43a
+  }
+  .name {
+      min-width: 4em;
+      text-align: right
   }
 </style>

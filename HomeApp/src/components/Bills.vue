@@ -1,6 +1,8 @@
 <template>
-    <div v-if="posts && posts.length" class="q-ma-xs row justify-center">
-      <q-btn v-for="posts of posts" :key="posts.id" size="1rem" class="q-ma-xs" :style="{backgroundColor: '#f2a43a', color: 'white'}" :icon='posts.icon' :label="`$`+(posts.amount/posts.number_housemates).toFixed(2)" />
+    <div>
+        <div class="justify-center row" v-for="bills of bills" :key="bills.id" >
+            <q-btn @click="click" v-on:click="bills.paid = !bills.paid" size="1rem" rounded class="col-12 q-ma-xs" v-bind:class="[{ 'unpaid' : !bills.paid, 'paid' : bills.paid }]" :icon='bills.icon' v-bind:label="!bills.paid == true ?  `$`+(bills.amount/bills.number_housemates).toFixed(2) :  '✔'" />
+        </div>
     </div>
 </template>
 
@@ -11,19 +13,24 @@ export default {
   name: 'Bills',
   data () {
     return {
-      posts: [],
+      bills: [],
       errors: []
     }
   },
   methods: {
-    loadPosts () {
-      return axios.get('http://localhost:3003/bills/1/')
+    loadbills () {
+      console.log('fetching')
+      return axios.get('http://localhost:3002/mybills/1/')
+    },
+    click () {
+      console.log(this.datetime, 'CLICKED')
     }
   },
   created () {
-    this.loadPosts()
+    this.loadbills()
       .then(response => {
-        this.posts = response.data
+        this.bills = response.data
+        console.log(this.bills)
       })
       .catch(e => {
         this.errors.push(e)
@@ -33,15 +40,12 @@ export default {
 </script>
 
 <style scoped>
-@media screen and ( max-width: 900px ) {
-  div { flex-basis: 33%; }                    /* forces three items to a divne */
+.paid {
+    background-color: lightgreen;
+    color: white;
 }
-
-@media screen and ( max-width: 600px ) {
-  div { flex-basis: 50%; }                    /* forces two items to a divne */
-}
-
-@media screen and ( max-width: 300px ) {
-  div { flex-basis: 100%; }                   /* forces one item per divne line */
+.unpaid {
+    background-color: orange;
+    color: white;
 }
 </style>

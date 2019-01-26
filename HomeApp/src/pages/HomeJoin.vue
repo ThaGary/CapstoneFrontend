@@ -2,7 +2,7 @@
   <div class="login flex row content-center justify-center text-center">
     <p>
       <img
-        src="~assets/weather/sunny.svg"
+        src="~assets/capstonelogo.svg"
         style="width:30vw;max-width:150px;"
       >
     </p>

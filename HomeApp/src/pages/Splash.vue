@@ -1,9 +1,8 @@
 <template>
   <div class="splash flex row content-center justify-center text-center">
     <p>
-      <img
+      <img class="col-12"
         src="~assets/capstonelogo.svg"
-        style="width:30vw;max-width:150px;"
       >
     </p>
     <h1>HappyHouse</h1>

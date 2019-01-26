@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import VueSocketio from 'vue-socket.io'
+import socketio from 'socket.io-client'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter, VueSocketio, socketio('http://localhost:3002'))
 
 /*
  * If not building with SSR mode, you can
