@@ -40,22 +40,13 @@
             <q-slider v-model="houseEdit[0].number_housemates" :min="0" :max="10" :step="1" label snap markers />
             </div>
         </div>
-        <div v-if="houseEdit && houseEdit.length" class="bills q-mb-xl col-12">
+        <div v-if="houseEdit && houseEdit.length" class="bills row q-mb-xl col-12">
             <h3 class="col-12 text-weight-bolder">Update Bill Amount.</h3>
             <h6 class="col-12 subtitle text-weight-thin">
                  Use Total we will do the math for you. Leave empty if does not apply.
             </h6>
-            <div class="q-ma-md row justify-center items-center" v-for="houseEdit of houseEdit" :key="houseEdit.id">
-                <q-chip @click="sendToPut(houseEdit.id, houseEdit.icon)" color="amber-6" text-color="white" detail square :icon="houseEdit.icon">${{ houseEdit.amount }}</q-chip>
-            </div>
-            <div class="row">
-                <i :class="this.icon" />
-                {{ this.id }}
-                {{ this.amount }}
-            <q-input v-bind:class="this.id" class="col-3 q-ml-xl" :float-label="amount" prefix="$" value="amount" v-model="amount" />
-            <button class="col-2" @click="put(this.id, this.amount)">
-                    <i :label="houseEdit.icon" class="green fas fa-check-circle" />
-            </button>
+            <div class="q-pa-xs col-12 row" v-for="houseEdit of houseEdit" :key="houseEdit.id">
+                <q-chip class="col-12" @click="sendToPut(houseEdit.id, houseEdit.icon)" color="amber-7" text-color="white" detail :icon="houseEdit.icon">${{ houseEdit.amount }}</q-chip>
             </div>
         </div>
         <div v-if="post && post.length" class="col-10">
@@ -102,7 +93,7 @@ export default {
   methods: {
     sendToPut (id, icon) {
       this.id = id
-      this.icon = icon
+      this.icon = icon + 'fa-xs'
     },
     put () {
       var url = 'http://localhost:3002/bills/1/' + this.id

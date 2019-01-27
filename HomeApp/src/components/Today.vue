@@ -6,23 +6,12 @@
         <span class="text-left"><q-icon class="" name="fas fa-temperature-high high" /> High {{maxTemp}}°F</span>
         <span class="text-left"><q-icon name="fas fa-temperature-low low" /> Low {{minTemp}}°F</span>
       </div>
-      <div class="right col-8 items-center row">
+      <div class="right col-8 items-center text-center row">
         <span class="text-bold q-display-2 col-12 text-center">{{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}</span>
+        <h2 class="col-12">{{name}}</h2>
       </div>
     </div>
   </div>
-    <!-- <q-card inline class="bigger q-mt-sm">
-      <q-card-title class="relative-position">
-        <div class="ellipsis">{{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}</div>
-        <img class="weather" :src="this.icon" />
-        <div slot="right" class="column items-start">
-          <span><q-icon class="q-mb-md" name="fas fa-temperature-high high" /> High {{maxTemp}}°F</span>
-          <span><q-icon name="fas fa-temperature-low low" /> Low {{minTemp}}°F</span>
-        </div>
-      </q-card-title>
-      <q-card-main class="text-faded">
-      </q-card-main>
-    </q-card> -->
 </template>
 
 <script>
@@ -34,6 +23,7 @@ export default {
     return {
       houseEdit: [],
       errors: [],
+      name: '',
       weather: '',
       currentTemp: '',
       minTemp: '',
@@ -57,6 +47,7 @@ export default {
         .get(url)
         .then(response => {
           this.weather = response.data.weather.main
+          this.name = response.data.name
           this.currentTemp = response.data.main.temp
           this.minTemp = response.data.main.temp_min
           this.maxTemp = response.data.main.temp_max
@@ -97,11 +88,6 @@ export default {
   color:lightcoral
 }
 .weather {
-  /* position: absolute;
-  margin: auto;
-  margin-top: -7.5em;
-  width: 100vw;
-  z-index: -1; */
   height: 5em;
 }
 .container {

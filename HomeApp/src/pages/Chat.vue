@@ -7,7 +7,7 @@
                     <div class="textbox q-ml-xs">
                       <p class="name">{{ msg.first_name }}: </p>
                       <p class="text">{{ msg.text }}</p>
-                      <p class="stamp">{{ msg.stamp.slice(0, 6) }}</p>
+                      <p class="stamp">{{ msg.stamp.slice(4, 11) }}{{ msg.stamp.slice(16, 21) }}</p>
                     </div>
                   </div>
               </div>
@@ -136,8 +136,8 @@ input {
   padding-right: 1em;
   background-color: #f2a43a;
   border-radius: .3em;
-  max-width: 65vw;
-  min-width: 65vw;
+  max-width: 85vw;
+  min-width: 85vw;
 }
 .text {
   font-weight: bold;
@@ -159,5 +159,12 @@ input {
   100% {
     opacity: 1;
   }
+}
+html {
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 </style>

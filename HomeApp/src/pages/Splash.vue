@@ -5,7 +5,7 @@
         src="~assets/capstonelogo.svg"
       >
     </p>
-    <h1>HappyHouse</h1>
+    <h1>HomeApp</h1>
     <div class="col-10 q-mx-xl">
         <div class="q-mt-xs buttons row justify-center">
             <q-btn class="signup q-ma-md col-4" color="amber-8" label="Sign Up" @click="$router.push('/name')"/>
