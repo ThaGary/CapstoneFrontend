@@ -13,20 +13,31 @@
         </div>
         <q-modal v-model="minimizedModal" minimized>
                 <div style="padding: 50px">
-                    <div class="q-display-1 q-mb-md">Edit {{this.name}}</div>
-                    <q-input class="col-10" type="text" v-bind:value="this.amount" float-label="amount" :placeholder="this.amount" />
-                    <q-btn color="red" v-close-overlay label="Close" />
+                    <div class="q-display-1 q-mx-md">Edit {{this.name}}
+                    </div>
+                    <p>The previous total was ${{ this.amount }}</p>
+                    <q-input class="col-10" type="text" prefix="$" :value="this.amount" v-model="newAmount" float-label="amount" :placeholder="amount" />
+                    <div class="buttons row">
+                        <q-btn class="q-ma-xs col-5" color="green" v-close-overlay label="Update" @click="put(newAmount),showNotification()" />
+                        <q-btn class="q-ma-xs col-5" color="red" v-close-overlay label="Close" />
+                    </div>
                 </div>
             </q-modal>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+import { Notify } from 'quasar'
+
+Notify.create({ color: 'green', textColor: 'white', message: 'Bills updated!', icon: 'thumb_up', position: 'center', timeout: 3000 })
+
 export default {
   name: 'EditBills',
   props: ['EditHome'],
   data () {
     return {
+      newAmount: 0,
       minimizedModal: false,
       name: '',
       id: 0,
@@ -42,6 +53,25 @@ export default {
     },
     getTempAmount () {
       console.log(this.amount)
+    },
+    put (newAmount) {
+      this.amount = newAmount
+      var url = 'http://localhost:3002/bills/1/' + this.id
+      console.log('put', this.id, newAmount)
+      axios.put(url, {
+        amount: this.newAmount
+      })
+        .then(response => {
+          console.log(response, 'success')
+        })
+        .catch(error => {
+          console.log(error)
+          this.errors.push(error)
+        })
+    },
+    showNotification () {
+      window.location.reload()
+      this.$q.notify({ color: 'green', textColor: 'white', message: 'Bills Updated!', icon: 'thumb_up' })
     }
   }
 }

@@ -6,7 +6,10 @@
         <q-toolbar-title>
           HomeApp
         </q-toolbar-title>
-        <i class="fas fa-arrow-left" @click="$router.push('/home')"></i>
+        <button class="row text-white text-bold items-center" @click="$router.push('/home')">
+          <i class="fas fa-arrow-left"></i>
+          <div class="q-pa-xs"> Back</div>
+        </button>
       </q-toolbar>
     </q-layout-header>
 
