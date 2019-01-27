@@ -23,7 +23,7 @@ export default {
       console.log('fetching')
       return axios.get('http://localhost:3002/mybills/1/')
     },
-    put (id, paid) {
+    put (membersID, id, paid) {
       var url = 'http://localhost:3002/paid/' + id
       this.id = id
       axios.put(url, {

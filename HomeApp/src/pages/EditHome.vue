@@ -46,7 +46,7 @@
                  Use Total we will do the math for you. Leave empty if does not apply.
             </h6>
             <div class="q-mt-md row justify-center items-center" v-for="(houseEdit, index) of houseEdit" :key="houseEdit.id">
-                <q-input class="col-8" type="number" prefix="$" :value="houseEdit.amount" v-model="amount[index]" :float-label="houseEdit.name" :placeholder="houseEdit.amount" />
+                <q-input class="col-8" type="number" prefix="$" :value="houseEdit.amount" :key="index" v-model="houseEdit.amount" :float-label="houseEdit.name" placeholder="houseEdit.amount"  />
                 <button class="col-2" @click="put(houseEdit.id)">
                     <i :label="houseEdit.icon" class="green fas fa-check-circle" />
                 </button>
@@ -81,19 +81,11 @@ export default {
     return {
       marker: 6,
       post: [],
-      amount: 210,
+      amount: 200,
       houseEdit: [
         {
           house_name: '',
-          password: '',
-          number_housemates: 0,
-          trash_day: '',
-          name: '',
-          icon: '',
-          amount: 0,
-          date: '',
-          icon_color: '',
-          house_id: 1
+          amount: 200
         }
       ],
       errors: []
