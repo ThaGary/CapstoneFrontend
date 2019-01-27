@@ -45,11 +45,17 @@
             <h6 class="col-12 subtitle text-weight-thin">
                  Use Total we will do the math for you. Leave empty if does not apply.
             </h6>
-            <div class="q-mt-md row justify-center items-center" v-for="(houseEdit, index) of houseEdit" :key="houseEdit.id">
-                <q-input class="col-8" type="number" prefix="$" :value="houseEdit.amount" :key="index" v-model="houseEdit.amount" :float-label="houseEdit.name" placeholder="houseEdit.amount"  />
-                <button class="col-2" @click="put(houseEdit.id)">
+            <div class="q-ma-md row justify-center items-center" v-for="houseEdit of houseEdit" :key="houseEdit.id">
+                <q-chip @click="sendToPut(houseEdit.id, houseEdit.icon)" color="amber-6" text-color="white" detail square :icon="houseEdit.icon">${{ houseEdit.amount }}</q-chip>
+            </div>
+            <div class="row">
+                <i :class="this.icon" />
+                {{ this.id }}
+                {{ this.amount }}
+            <q-input v-bind:class="this.id" class="col-3 q-ml-xl" :float-label="amount" prefix="$" value="amount" v-model="amount" />
+            <button class="col-2" @click="put(this.id, this.amount)">
                     <i :label="houseEdit.icon" class="green fas fa-check-circle" />
-                </button>
+            </button>
             </div>
         </div>
         <div v-if="post && post.length" class="col-10">
@@ -81,7 +87,9 @@ export default {
     return {
       marker: 6,
       post: [],
-      amount: 200,
+      amount: 1,
+      id: 1,
+      icon: '',
       houseEdit: [
         {
           house_name: '',
@@ -92,9 +100,13 @@ export default {
     }
   },
   methods: {
-    put (id) {
-      var url = 'http://localhost:3002/bills/1/' + id
-      console.log('put', id, this.amount)
+    sendToPut (id, icon) {
+      this.id = id
+      this.icon = icon
+    },
+    put () {
+      var url = 'http://localhost:3002/bills/1/' + this.id
+      console.log('put', this.id, this.amount)
       axios.put(url, {
         amount: this.amount
       })
@@ -120,7 +132,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .subtitle {
       margin-top: -2em;
       color: #919191;
@@ -139,5 +151,9 @@ export default {
   }
   .green {
       color: green
+  }
+  .houseamount {
+      padding-left: 1em;
+      padding-top: 1em
   }
 </style>

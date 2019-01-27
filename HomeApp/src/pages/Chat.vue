@@ -43,6 +43,7 @@ export default {
       stamp: Date(),
       member_id: 1,
       house_id: 1,
+      first_name: 'Gary',
       messages: [],
       socket: io.connect('http://localhost:3002')
     }
@@ -54,11 +55,22 @@ export default {
     sendMessage (e) {
       e.preventDefault()
       this.socket.emit('SEND_MESSAGE', {
+        first_name: this.first_name,
         text: this.text,
         stamp: Date(),
         member_id: 1,
         house_id: 1
       })
+      axios.post(`http://localhost:3002/chat/`, {
+        text: this.text,
+        stamp: Date(),
+        members_id: 1,
+        house_id: 1
+      })
+        .then(response => {})
+        .catch(e => {
+          this.errors.push(e)
+        })
       this.text = ''
     },
     click () {
