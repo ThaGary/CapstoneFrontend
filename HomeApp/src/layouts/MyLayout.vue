@@ -6,6 +6,7 @@
         <q-toolbar-title>
           HomeApp
         </q-toolbar-title>
+        <q-btn flat round dense icon="chat" @click="$router.push('/chat')"/>
         <q-btn flat round dense icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
         <q-layout-drawer side="right" v-model="rightDrawerOpen">
           <q-list-header>HomeApp</q-list-header>

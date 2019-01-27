@@ -1,8 +1,8 @@
 <template >
     <div class="editpage justify-center text-center row">
-          <EditHouse class="col-12" v-bind:EditHome="EditHome"/>
-          <EditBills class="col-12" v-bind:EditHome="EditHome"/>
-          <EditBulletin class="col-12"/>
+          <EditHouse class="col-12 q-my-md" v-bind:EditHome="EditHome"/>
+          <EditBills class="col-12 q-my-md" v-bind:EditHome="EditHome"/>
+          <EditBulletin class="col-12 q-my-md"/>
     </div>
 </template>
 

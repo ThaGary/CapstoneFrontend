@@ -12,17 +12,17 @@
             </button>
         </div>
         <q-modal v-model="minimizedModal" minimized>
-                <div style="padding: 50px">
-                    <div class="q-display-1 q-mx-md">Edit {{this.name}}
-                    </div>
-                    <p>The previous total was ${{ this.amount }}</p>
-                    <q-input class="col-10" type="text" prefix="$" :value="this.amount" v-model="newAmount" float-label="amount" :placeholder="amount" />
-                    <div class="buttons row">
-                        <q-btn class="q-ma-xs col-5" color="green" v-close-overlay label="Update" @click="put(newAmount),showNotification()" />
-                        <q-btn class="q-ma-xs col-5" color="red" v-close-overlay label="Close" />
-                    </div>
+            <div style="padding: 50px">
+                <div class="q-display-1 q-mx-md">Edit {{this.name}}
                 </div>
-            </q-modal>
+                <p>The previous total was ${{ this.amount }}</p>
+                <q-input class="col-10" type="text" prefix="$" :value="this.amount" v-model="newAmount" float-label="amount" :placeholder="amount" />
+                <div class="buttons row">
+                    <q-btn class="q-ma-xs col-5" color="green" v-close-overlay label="Update" @click="put(newAmount),showNotification()" />
+                    <q-btn class="q-ma-xs col-5" color="red" v-close-overlay label="Close" />
+                </div>
+            </div>
+        </q-modal>
     </div>
 </template>
 
@@ -30,7 +30,7 @@
 import axios from 'axios'
 import { Notify } from 'quasar'
 
-Notify.create({ color: 'green', textColor: 'white', message: 'Bills updated!', icon: 'thumb_up', position: 'center', timeout: 3000 })
+Notify.create({ color: 'green', textColor: 'white', message: 'Updated!', icon: 'thumb_up', position: 'center', timeout: 3000 })
 
 export default {
   name: 'EditBills',
@@ -50,9 +50,6 @@ export default {
       this.id = id
       this.amount = amount
       console.log(this.name, this.id, this.amount)
-    },
-    getTempAmount () {
-      console.log(this.amount)
     },
     put (newAmount) {
       this.amount = newAmount

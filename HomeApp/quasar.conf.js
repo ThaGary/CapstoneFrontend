@@ -71,7 +71,8 @@ module.exports = function (ctx) {
         'QDatetime',
         'QSelect',
         'QOptionGroup',
-        'QModal'
+        'QModal',
+        'QEditor'
       ],
       directives: [
         'Ripple',
@@ -87,7 +88,12 @@ module.exports = function (ctx) {
     // animations: 'all' --- includes all animations
     animations: [
       'fadeIn',
-      'fadeOut'
+      'fadeOut',
+      'slideInRight',
+      'slideOutRight',
+      'tada',
+      'fadeInRight',
+      'fadeOutRight'
     ],
     ssr: {
       pwa: false
