@@ -8,7 +8,7 @@
         </q-toolbar-title>
         <q-btn flat round dense icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
         <q-layout-drawer side="right" v-model="rightDrawerOpen">
-          <q-list-header>HappyHouse</q-list-header>
+          <q-list-header>HomeApp</q-list-header>
             <q-item @click.native="$router.push('/chat')">
               <q-item-side icon="group" />
               <q-item-main label="Chat" sublabel="Chat" />

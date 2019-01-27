@@ -70,10 +70,12 @@ module.exports = function (ctx) {
         'QCardActions',
         'QDatetime',
         'QSelect',
-        'QOptionGroup'
+        'QOptionGroup',
+        'QModal'
       ],
       directives: [
-        'Ripple'
+        'Ripple',
+        'CloseOverlay'
       ],
       // Quasar plugins
       plugins: [

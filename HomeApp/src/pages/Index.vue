@@ -19,6 +19,11 @@ import axios from 'axios'
 
 export default {
   name: 'PageIndex',
+  components: {
+    Bulletin,
+    Bills,
+    Today
+  },
   data () {
     return {
       first_name: 'DUMB',
@@ -52,11 +57,6 @@ export default {
   },
   beforeMount () {
     this.getUser()
-  },
-  components: {
-    Bulletin,
-    Bills,
-    Today
   }
 }
 </script>
