@@ -1,8 +1,20 @@
 <template>
-    <q-card inline class="bigger q-mt-sm">
+  <div>
+    <div class="container row q-mt-md">
+      <div class="justify-center col-4 column left">
+        <img class="weather" :src="this.icon" />
+        <span class="text-left"><q-icon class="" name="fas fa-temperature-high high" /> High {{maxTemp}}°F</span>
+        <span class="text-left"><q-icon name="fas fa-temperature-low low" /> Low {{minTemp}}°F</span>
+      </div>
+      <div class="right col-8 items-center row">
+        <span class="text-bold q-display-2 col-12 text-center">{{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}</span>
+      </div>
+    </div>
+  </div>
+    <!-- <q-card inline class="bigger q-mt-sm">
       <q-card-title class="relative-position">
         <div class="ellipsis">{{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}</div>
-        <img :src="this.icon" />
+        <img class="weather" :src="this.icon" />
         <div slot="right" class="column items-start">
           <span><q-icon class="q-mb-md" name="fas fa-temperature-high high" /> High {{maxTemp}}°F</span>
           <span><q-icon name="fas fa-temperature-low low" /> Low {{minTemp}}°F</span>
@@ -10,7 +22,7 @@
       </q-card-title>
       <q-card-main class="text-faded">
       </q-card-main>
-    </q-card>
+    </q-card> -->
 </template>
 
 <script>
@@ -78,13 +90,22 @@ export default {
 </script>
 
 <style scoped>
-img {
-    height: 3em;
-}
 .low {
   color: lightblue
 }
 .high {
   color:lightcoral
+}
+.weather {
+  /* position: absolute;
+  margin: auto;
+  margin-top: -7.5em;
+  width: 100vw;
+  z-index: -1; */
+  height: 5em;
+}
+.container {
+  padding: 1em;
+  border: 1px solid lightgray;
 }
 </style>
