@@ -1,5 +1,5 @@
 <template>
-  <div class="card mt-3">
+  <div class="card page mt-3">
       <div class="card-body">
           <div v-chat-scroll id="msgbox" class="card-body">
               <div class="messages justify-center row q-ma-md" v-for="(msg, index) in messages" :key="index">
@@ -136,8 +136,7 @@ input {
   padding-right: 1em;
   background-color: #f2a43a;
   border-radius: .3em;
-  max-width: 85vw;
-  min-width: 85vw;
+  min-width: 90vw;
 }
 .text {
   font-weight: bold;

@@ -1,5 +1,5 @@
 <template>
-  <div class="login flex row content-center justify-center text-center">
+  <div class="login page flex row content-center justify-center text-center">
     <p>
       <img
         src="~assets/capstonelogo.svg"

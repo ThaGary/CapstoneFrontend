@@ -1,6 +1,8 @@
 <template>
   <div id="q-app">
-    <router-view />
+    <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -17,5 +19,9 @@ body {
 }
 h1 {
   color:orange;
+}
+.page {
+  position: fixed;
+  width: inherit;
 }
 </style>

@@ -5,8 +5,8 @@
                  Use Total we will do the math for you. Leave empty if does not apply.
             </h6>
         <div class="row justify-center" v-bind:key="bills.id" v-for="bills in EditHome">
-            <button class="q-ma-xs row col-10" @click="setFormData(bills.name, bills.id, bills.amount), minimizedModal=!minimizedModal">
-                <q-chip :id="bills.id" class="q-ma-xs col-12" square color="amber-7" text-color="white" detail :icon="bills.icon">
+            <button class="q-ma-xs justify-center row col-12" @click="setFormData(bills.name, bills.id, bills.amount), minimizedModal=!minimizedModal">
+                <q-chip :id="bills.id" class="q-ma-xs col-10" square color="amber-7" text-color="white" detail :icon="bills.icon">
                {{bills.name}}: ${{bills.amount}}
                 </q-chip>
             </button>

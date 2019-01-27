@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex column">
+  <q-page class="flex page column">
     <Today class="col-12 q-mx-md q-mt-md" />
     <Bills class="col-12 q-mx-md q-mt-md" />
     <div class="text-thin col-12 column" >

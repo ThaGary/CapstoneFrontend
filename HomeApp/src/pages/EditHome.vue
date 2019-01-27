@@ -129,4 +129,7 @@ export default {
       padding-left: 1em;
       padding-top: 1em
   }
+  ::-webkit-scrollbar {
+    display: none;
+}
 </style>

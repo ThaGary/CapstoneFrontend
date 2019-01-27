@@ -1,5 +1,5 @@
 <template>
-  <div class="splash flex row content-center justify-center text-center">
+  <div class="splash page flex row content-center justify-center text-center">
     <p>
       <img class="col-12"
         src="~assets/capstonelogo.svg"
