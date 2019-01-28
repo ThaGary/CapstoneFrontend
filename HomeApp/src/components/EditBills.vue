@@ -30,18 +30,18 @@
 import axios from 'axios'
 import { Notify } from 'quasar'
 
-Notify.create({ color: 'green', textColor: 'white', message: 'Updated!', icon: 'thumb_up', position: 'center', timeout: 3000 })
+Notify.create({ color: 'green', textColor: 'white', message: 'Updated!', icon: 'thumb_up', position: 'center', timeout: 1000 })
 
 export default {
   name: 'EditBills',
   props: ['EditHome'],
   data () {
     return {
-      newAmount: 0,
+      newAmount: null,
       minimizedModal: false,
       name: '',
       id: 0,
-      amount: 0
+      amount: null
     }
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex column">
     <Today class="col-12 q-mx-md q-mt-md animated fadeInRight" />
-    <Bills class="col-12 q-mx-md q-mt-md animated fadeInLeft" />
+    <Bills v-bind:PageIndex="PageIndex" class="col-12 q-mx-md q-mt-md animated fadeInLeft" />
     <div class="text-thin col-12 column animated fadeInRight" >
       <Bulletin class="q-mx-md q-mt-md" />
     </div>

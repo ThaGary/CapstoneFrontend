@@ -34,11 +34,12 @@
                 <h6 class="subtitle col-12 text-weight-thin">
                     What day do you have trash services.
                 </h6>
+                <div :@click="putTrash(EditHome[0].house_id, EditHome[0].trash_day)">
                 <q-option-group
                     inline
                     type="radio"
-                    :value="EditHome[0].trash_day"
-                    v-model="newTrash"
+                    v-bind:value="EditHome[0].trash_day"
+                    v-model="EditHome[0].trash_day"
                     :options="[
                     { label: 'Mon', value: 'Mon', color: 'amber-7' },
                     { label: 'Tue', value: 'Tue', color: 'amber-7' },
@@ -47,6 +48,7 @@
                     { label: 'Fri', value: 'Fri', color: 'amber-7' }
                     ]"
                 />
+                </div>
             </div>
             <div class="justify-center row housemates">
                 <h3 class="text-weight-bolder">Whats your Zipcode?</h3>
@@ -69,7 +71,7 @@
                     Number of Housemates: {{ EditHome[0].number_housemates }}
                 </h3>
                 </span>
-                <q-slider class="col-10" color="amber-7" v-model="EditHome[0].number_housemates" :min="0" :max="10" :step="1" label snap markers />
+                  <q-slider :@click="putHousemates(EditHome[0].house_id, EditHome[0].number_housemates)" class="col-10" color="amber-7" v-model="EditHome[0].number_housemates" :min="0" :max="10" :step="1" label snap markers />
             </div>
         </div>
     </div>
@@ -93,10 +95,41 @@ export default {
       newhouse_name: '',
       newpassword: '',
       newTrash: '',
+      trash_day: 'Tue',
       newZipcode: 0
     }
   },
   methods: {
+    putTrash (id, day) {
+      this.trash_day = day
+      console.log(day)
+      var url = 'http://localhost:3002/house/' + id
+      axios.put(url, {
+        trash_day: day
+      })
+        .then(response => {
+          console.log(response, 'success')
+        })
+        .catch(error => {
+          console.log(error)
+          this.errors.push(error)
+        })
+    },
+    putHousemates (id, num) {
+      this.number_housemates = num
+      console.log(num)
+      var url = 'http://localhost:3002/house/' + id
+      axios.put(url, {
+        number_housemates: num
+      })
+        .then(response => {
+          console.log(response, 'success')
+        })
+        .catch(error => {
+          console.log(error)
+          this.errors.push(error)
+        })
+    },
     putName (id, name) {
       console.log(id, this.newhouse_name, name)
       var url = 'http://localhost:3002/house/' + id
