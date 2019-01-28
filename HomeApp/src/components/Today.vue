@@ -1,14 +1,24 @@
 <template>
   <div>
-    <div class="container row q-mt-md">
-      <div class="justify-center col-4 column left">
-        <img class="weather" :src="this.icon" />
-        <span class="text-left"><q-icon class="" name="fas fa-temperature-high high" /> High {{maxTemp}}°F</span>
-        <span class="text-left"><q-icon name="fas fa-temperature-low low" /> Low {{minTemp}}°F</span>
-      </div>
-      <div class="right col-8 items-center text-center row">
-        <span class="text-bold q-display-2 col-12 text-center">{{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}</span>
-        <h2 class="col-12">{{name}}</h2>
+    <div class="container justify-center row q-mt-md">
+      <div class="justify-center row left">
+        <span class="text-bold col-6 text-center">
+          {{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}
+        </span>
+        <span class="text-right col-6">
+            <q-icon class="" name="fas fa-temperature-high high" />
+            High {{maxTemp}}°F
+          </span>
+        <span class="items-end row col-12 weather">
+          <span class="text-bold col-6 text-center">
+          {{name}}
+          </span>
+          <span class="text-right col-6">
+            <q-icon name="fas fa-temperature-low low" />
+              Low {{minTemp}}°F
+          </span>
+        </span>
+        <img class="weatherIcon" :src="this.icon" />
       </div>
     </div>
   </div>
@@ -88,10 +98,17 @@ export default {
   color:lightcoral
 }
 .weather {
-  height: 5em;
+  max-height: 3em;
+}
+.weatherIcon {
+  height: 4em;
+  position: fixed;
+  margin: auto;
+  margin-top: -1em;
+  z-index: -1
 }
 .container {
   padding: 1em;
-  border: 1px solid lightgray;
+  border: 2px solid #e0e0e0;
 }
 </style>

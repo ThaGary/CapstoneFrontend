@@ -1,12 +1,15 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-layout-header>
+    <q-layout-header class="animated slideInDown">
       <q-toolbar color="amber-8">
         <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>
           HomeApp
         </q-toolbar-title>
-        <i class="fas fa-arrow-left" @click="$router.push('/home')"/>
+        <button class="row text-white text-bold items-center" @click="$router.push('/home')">
+          <i class="fas fa-arrow-left"></i>
+          <div class="q-pa-xs"> Back</div>
+        </button>
       </q-toolbar>
     </q-layout-header>
 

@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-layout-header>
+    <q-layout-header class="animated slideInDown">
       <q-toolbar color="amber-8">
         <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>

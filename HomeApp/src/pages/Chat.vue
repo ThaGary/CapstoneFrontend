@@ -4,7 +4,7 @@
           <div v-chat-scroll id="msgbox" class="card-body">
               <div class="messages justify-center row q-ma-md" v-for="(msg, index) in messages" :key="index">
                   <div class="items-center row q-pt-md q-mr-xs">
-                    <div class="textbox q-ml-xs">
+                    <div class="textbox q-ml-xs animated fadeIn">
                       <p class="name">{{ msg.first_name }}: </p>
                       <p class="text">{{ msg.text }}</p>
                       <p class="stamp">{{ msg.stamp.slice(4, 11) }}{{ msg.stamp.slice(16, 21) }}</p>
@@ -13,7 +13,7 @@
               </div>
           </div>
       </div>
-      <q-layout-footer v-model="footer">
+      <q-layout-footer class="animated slideInUp" v-model="footer">
         <form @submit.prevent="sendMessage">
           <q-toolbar color="amber-8">
             <q-toolbar-title>

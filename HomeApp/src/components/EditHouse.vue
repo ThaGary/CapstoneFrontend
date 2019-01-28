@@ -7,7 +7,7 @@
             </h6>
             <div class="input justify-center row">
                 <div class="houseInput justify-center row">
-                    <q-input class="col-8" type="text" v-bind:value="EditHome[0].house_name" float-label="House Name" @click="putHouseName=!putHouseName" v-model="newhouse_name" :placeholder="EditHome[0].house_name" />
+                    <q-input class="col-8" type="text" v-bind:value="EditHome.house_name" float-label="House Name" @click="putHouseName=!putHouseName" v-model="newhouse_name" :placeholder="EditHome[0].house_name" />
                     <transition appear enter-active-class="animated fadeInRight" leave-active-class="animated fadeOutRight" mode="out-in">
                         <q-btn size="sm" class="col-2 q-ml-md" @click="putName(EditHome[0].house_id, newhouse_name), showNotification(), updatedName=!updatedName" color="green" v-if="putHouseName">
                             <transition appear enter-active-class="animated tade" leave-active-class="animated tada" mode="out-in">

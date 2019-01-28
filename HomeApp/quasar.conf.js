@@ -89,11 +89,22 @@ module.exports = function (ctx) {
     animations: [
       'fadeIn',
       'fadeOut',
+      'fadeInRight',
+      'fadeInLeft',
+      'fadeOutRight',
+      'fadeOutLeft',
+      'tada',
       'slideInRight',
       'slideOutRight',
-      'tada',
-      'fadeInRight',
-      'fadeOutRight'
+      'slideInLeft',
+      'slideOutLeft',
+      'flash',
+      'bounce',
+      'shake',
+      'pulse',
+      'swing',
+      'slideInUp',
+      'slideInDown'
     ],
     ssr: {
       pwa: false
