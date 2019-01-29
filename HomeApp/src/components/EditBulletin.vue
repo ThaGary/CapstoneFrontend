@@ -22,8 +22,9 @@
                         <q-input class="col-10" type="text" :value="post.title" v-model="editTitle" float-label="Title" :placeholder="title" />
                         <q-input class="col-10" type="textarea" :value="post.entry" v-model="editEntry" float-label="Entry" :placeholder="entry" />
                         <div class="buttons q-mt-md justify-center row">
-                            <q-btn class="q-ma-xs col-5" color="green" v-close-overlay label="Update" @click="put(editTitle, editEntry),showNotification()" />
-                            <q-btn class="q-ma-xs col-5" color="red" v-close-overlay label="Close" />
+                            <q-btn class="q-ma-xs col-3" color="red" v-close-overlay label="DELETE" @click="deleteBull(post.id),showNotification()" />
+                            <q-btn class="q-ma-xs col-3" color="green" v-close-overlay label="Update" @click="put(editTitle, editEntry),showNotification()" />
+                            <q-btn class="q-ma-xs col-3" color="amber-7" v-close-overlay label="Cancel" />
                         </div>
                     </div>
                 </q-modal>
@@ -91,6 +92,10 @@ export default {
           console.log(error)
           this.errors.push(error)
         })
+    },
+    deleteBull (id) {
+      var url = 'http://localhost:3002/bulletin/' + id
+      axios.delete(url, {id: id})
     },
     post (newTitle, newEntry) {
       this.title = newTitle

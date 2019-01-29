@@ -25,7 +25,7 @@
                     <div>
                       <q-chip v-show="check(msg.members_id)" pointing="left" color="amber-8" class="justify-center">
                         <p class="name q-mt-md">
-                          :{{ msg.first_name }}
+                          :You
                         </p>
                       </q-chip>
                     </div>

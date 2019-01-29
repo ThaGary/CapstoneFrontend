@@ -1,12 +1,14 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-layout-header >
+    <q-layout-header class="">
       <q-toolbar color="amber-8">
         <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>
           HomeApp
         </q-toolbar-title>
+        <q-item>
         <q-btn flat class="animated tada" round dense icon="chat" @click="$router.push('/chat')"/>
+        </q-item>
         <q-btn flat round dense icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
         <q-layout-drawer side="right" v-model="rightDrawerOpen">
           <q-list-header>HomeApp</q-list-header>

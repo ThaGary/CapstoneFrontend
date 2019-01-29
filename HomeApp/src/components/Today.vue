@@ -1,24 +1,26 @@
 <template>
   <div>
-    <div class="container justify-center row q-mt-md">
-      <div class="justify-center row left">
-        <span class="text-bold col-6 text-center">
-          {{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}
+    <div class="justify-center row q-mt-md">
+      <div class="row left">
+        <span class="text-bold col-4 row text-center">
+          <span class="text-bold col-12">
+            {{ Date().slice(0,3) }}, {{ Date().slice(4,10) }}
+          </span>
+          <span class="text-bold  col-12">
+            {{name}}
+          </span>
         </span>
-        <span class="text-right col-6">
-            <q-icon class="" name="fas fa-temperature-high high" />
+        <img class="weatherIcon col-4 " :src="this.icon" />
+        <span class="text-right justify-center row col-4">
+          <span class="text-bold text-center">
+              <q-icon class="col-12" name="fas fa-temperature-high high" />
             High {{maxTemp}}°F
-          </span>
-        <span class="items-end row col-12 weather">
-          <span class="text-bold col-6 text-center">
-          {{name}}
-          </span>
-          <span class="text-right col-6">
-            <q-icon name="fas fa-temperature-low low" />
-              Low {{minTemp}}°F
+            </span>
+            <span class="text-bold col-12 text-center">
+              <q-icon name="fas fa-temperature-low low" />
+            Low {{minTemp}}°F
           </span>
         </span>
-        <img class="weatherIcon" :src="this.icon" />
       </div>
     </div>
   </div>
@@ -101,11 +103,7 @@ export default {
   max-height: 3em;
 }
 .weatherIcon {
-  height: 4em;
-  position: fixed;
-  margin: auto;
-  margin-top: -1em;
-  z-index: -1
+  height: 5em;
 }
 .container {
   padding: 1em;

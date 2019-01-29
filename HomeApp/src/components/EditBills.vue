@@ -10,19 +10,33 @@
                {{bills.name}}: ${{bills.amount}}
                 </q-chip>
             </button>
+            <q-modal v-model="minimizedModal" minimized>
+                <div style="padding: 50px">
+                    <div class="q-display-1 q-mx-md">Edit {{bills.name}}
+                    </div>
+                    <p>The previous total was ${{ bills.amount }}</p>
+                    <q-input class="col-10" type="text" prefix="$" :value="bills.amount" v-model="newAmount" float-label="amount" :placeholder="amount" />
+                    <div class="buttons justify-center row">
+                        <q-btn class="q-ma-xs col-3" color="red" v-close-overlay label="DELETE" @click="deleteBill(bills.id),showNotification()" />
+                        <q-btn class="q-ma-xs col-3" color="green" v-close-overlay label="Update" @click="put(newAmount),showNotification()" />
+                        <q-btn class="q-ma-xs col-3" color="amber-8" v-close-overlay label="Cancel" />
+                    </div>
+                </div>
+            </q-modal>
         </div>
-        <q-modal v-model="minimizedModal" minimized>
-            <div style="padding: 50px">
-                <div class="q-display-1 q-mx-md">Edit {{this.name}}
-                </div>
-                <p>The previous total was ${{ this.amount }}</p>
-                <q-input class="col-10" type="text" prefix="$" :value="this.amount" v-model="newAmount" float-label="amount" :placeholder="amount" />
-                <div class="buttons row">
-                    <q-btn class="q-ma-xs col-5" color="green" v-close-overlay label="Update" @click="put(newAmount),showNotification()" />
-                    <q-btn class="q-ma-xs col-5" color="red" v-close-overlay label="Close" />
-                </div>
-            </div>
-        </q-modal>
+        <q-btn class="q-my-xl" @click="addFormData(), minimizedModal2=!minimizedModal2" round size="1em" icon="add"></q-btn>
+                <q-modal v-model="minimizedModal2" minimized>
+                    <div style="padding: 50px">
+                        <div class="title text-bold q-mx-md">Add Bill
+                        </div>
+                        <q-input class="col-10" type="text" :value="Name" v-model="postName" float-label="name" :placeholder="name" />
+                        <q-input class="col-10" type="number" :value="Cost" v-model="postCost" float-label="cost" :placeholder="cost" />
+                        <div class="buttons q-mt-md justify-center row">
+                            <q-btn class="q-ma-xs col-5" color="green" v-close-overlay label="Add" @click="post(postName, postCost),showNotification()" />
+                            <q-btn class="q-ma-xs col-5" color="red" v-close-overlay label="Close" />
+                        </div>
+                    </div>
+                </q-modal>
     </div>
 </template>
 
@@ -38,8 +52,12 @@ export default {
   data () {
     return {
       newAmount: null,
+      postName: '',
+      postCost: 0,
       minimizedModal: false,
+      minimizedModal2: false,
       name: '',
+      house_id: 1,
       id: 0,
       amount: null
     }
@@ -49,7 +67,12 @@ export default {
       this.name = name
       this.id = id
       this.amount = amount
-      console.log(this.name, this.id, this.amount)
+      console.log(this.id)
+    },
+    addFormData (id, houseId) {
+      this.id = id
+      this.house_id = houseId
+      console.log(this.id, this.house_id)
     },
     put (newAmount) {
       this.amount = newAmount
@@ -66,9 +89,36 @@ export default {
           this.errors.push(error)
         })
     },
+    deleteBill (id) {
+      console.log(id)
+      var url = 'http://localhost:3002/bills/' + id
+      axios.delete(url, {id: id})
+    },
+    post (name, cost) {
+      this.house_id = 1
+      this.postName = name
+      this.postCost = cost
+      var url = 'http://localhost:3002/bills/'
+      console.log('post', this.house_id, name, cost)
+      axios.post(url, {
+        name: this.postName,
+        icon: 'fas fa-home',
+        amount: this.postCost,
+        day: 5,
+        icon_color: null,
+        house_id: this.house_id
+      })
+        .then(response => {
+          console.log(response, 'success')
+        })
+        .catch(error => {
+          console.log(error)
+          this.errors.push(error)
+        })
+    },
     showNotification () {
       window.location.reload()
-      this.$q.notify({ color: 'green', textColor: 'white', message: 'Bills Updated!', icon: 'thumb_up' })
+      this.$q.notify.create({ color: 'green', textColor: 'white', message: 'Bills Updated!', icon: 'thumb_up' })
     }
   }
 }

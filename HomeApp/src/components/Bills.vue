@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="justify-center row animated fadeIn" v-for="bills of bills" :key="bills.id" >
-            <q-btn @click="put(bills.id, bills.id, bills.paid = !bills.paid)" v-model="paid" size="1rem" rounded class="col-12 q-ma-xs" v-bind:class="[{ 'unpaid' : !bills.paid, 'paid' : bills.paid }]" :icon='bills.icon' v-bind:label="!bills.paid == true ?  `$`+(bills.amount/bills.number_housemates).toFixed(2) :  '✔'" />
+            <q-btn @click="put(bills.id, bills.id, bills.paid = !bills.paid)" v-model="paid" size="1rem" rounded class="col-12 q-ma-xs" v-bind:class="[{ 'unpaid' : !bills.paid, 'paid' : bills.paid }]" :icon='bills.icon' v-bind:label="!bills.paid == true ? bills.name + `: $`+(bills.amount/bills.number_housemates).toFixed(2) : '✔'" />
         </div>
     </div>
 </template>
@@ -42,7 +42,7 @@ export default {
   created () {
     this.loadbills()
       .then(response => {
-        this.bills = response.data
+        this.bills = response.data.sort()
         this.id = response.data.bills.id
       })
       .catch(e => {
