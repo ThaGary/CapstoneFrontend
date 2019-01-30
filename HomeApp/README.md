@@ -4,7 +4,7 @@
 
 # Demo
 
-![imgur Demo](https://i.imgur.com/OJuoAqa.gif)
+![imgur Demo](https://i.imgur.com/OJuoAqa.gif | width=100)
 
 # Tech Stuff:
 ## Frontend:
