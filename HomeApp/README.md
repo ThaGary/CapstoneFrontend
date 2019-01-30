@@ -1,10 +1,10 @@
-![RoomEase](~assets/capstonelogo.svg "RoomEase")
+![RoomEase](~assets/capstonelogo.svg)
 * Chromatic audio tuner in React Native.
 * Renders colors for each key in order to help artists learn to stay in tune.
 
 # Demo
 
-![Demo](https://i.imgur.com/OJuoAqa.gifv "Demo")
+![Demo](https://i.imgur.com/OJuoAqa.gif)
 
 # Tech Stuff:
 ## Frontend:
