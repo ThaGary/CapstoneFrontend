@@ -23,7 +23,7 @@ export default {
   },
   data () {
     return {
-      first_name: 'DUMB',
+      first_name: '',
       last_name: '',
       house_leader: null,
       house_id: 0,

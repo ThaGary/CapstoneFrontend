@@ -4,7 +4,7 @@
       <q-toolbar color="amber-8">
         <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>
-          HomeApp
+          RoomEase
         </q-toolbar-title>
         <button class="row text-white text-bold items-center" @click="$router.push('/home')">
           <i class="fas fa-arrow-left"></i>

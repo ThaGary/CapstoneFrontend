@@ -5,20 +5,17 @@
                  Use Total we will do the math for you. Leave empty if does not apply.
             </h6>
         <div class="row justify-center" v-bind:key="bills.id" v-for="bills in EditHome">
-            <button class="q-ma-xs justify-center row col-12" @click="setFormData(bills.name, bills.id, bills.amount), minimizedModal=!minimizedModal">
-                <q-chip :id="bills.id" class="q-ma-xs col-10" square color="amber-7" text-color="white" detail :icon="bills.icon">
+            <button class="q-ma-xs justify-center row col-10" @click="setFormData(bills.name, bills.id, bills.amount), minimizedModal=!minimizedModal">
+                <q-chip :id="bills.id" class="q-ma-xs col-10" square color="amber-7" v-model="name" text-color="white" detail :icon="bills.icon">
                {{bills.name}}: ${{bills.amount}}
                 </q-chip>
             </button>
             <q-modal v-model="minimizedModal" minimized>
                 <div style="padding: 50px">
-                    <div class="q-display-1 q-mx-md">Edit {{bills.name}}
-                    </div>
-                    <p>The previous total was ${{ bills.amount }}</p>
                     <q-input class="col-10" type="text" prefix="$" :value="bills.amount" v-model="newAmount" float-label="amount" :placeholder="amount" />
                     <div class="buttons justify-center row">
-                        <q-btn class="q-ma-xs col-3" color="red" v-close-overlay label="DELETE" @click="deleteBill(bills.id),showNotification()" />
-                        <q-btn class="q-ma-xs col-3" color="green" v-close-overlay label="Update" @click="put(newAmount),showNotification()" />
+                        <q-btn class="q-ma-xs col-3" color="red" v-close-overlay label="DELETE" @click="deleteBill(bills.id), showNotification()" />
+                       <q-btn class="q-ma-xs col-3" color="green" v-close-overlay label="Update" @click="put(newAmount),showNotification()" />
                         <q-btn class="q-ma-xs col-3" color="amber-8" v-close-overlay label="Cancel" />
                     </div>
                 </div>

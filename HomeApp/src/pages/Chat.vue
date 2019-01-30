@@ -5,7 +5,7 @@
               <div class="messages row animated fadeIn q-ma-md" v-for="(msg, index) in messages" :key="index">
                   <div v-bind:class="[{ 'justify-end' : check(msg.members_id), 'justify-start' : !check(msg.members_id)  }]" class="items-center row col-12 q-pt-md q-mr-xs">
                     <q-chip v-show="!check(msg.members_id)" pointing="right" color="grey-4">
-                      <p class="name q-mt-md">
+                      <p class="theirname q-mt-md">
                         {{ msg.first_name }}:
                       </p>
                     </q-chip>
@@ -24,7 +24,7 @@
                     </div>
                     <div>
                       <q-chip v-show="check(msg.members_id)" pointing="left" color="amber-8" class="justify-center">
-                        <p class="name q-mt-md">
+                        <p class="myname q-mt-md">
                           :You
                         </p>
                       </q-chip>
@@ -40,7 +40,7 @@
               Chat:
               <input type="text" class="form-control fixedTextInput" prefix="chat: " color="#f2a43a" v-model="text" />
             </q-toolbar-title>
-            <button type="Submit" class="btn" v-on:click="pingServer()" @click="click">
+            <button type="Submit" class="btn" @click="click">
               <i class="fas fa-share"></i>
             </button>
           </q-toolbar>
@@ -143,14 +143,19 @@ input {
   min-width: 90vw
 }
 .stamp {
-  color: black;
   font-size: 0.6em;
   font-weight: bold;
   text-align: right
 }
-.name {
+.theirname {
   font-weight: bold;
   color: black;
+  font-size: 1em;
+  text-align: left;
+}
+.myname {
+  font-weight: bold;
+  color: white;
   font-size: 1em;
   text-align: left;
 }
@@ -192,9 +197,8 @@ html {
   padding-right: 1em;
   border-radius: 2.5em;
   max-width: 60vw;
-  background-color:  #ffb348;
-  color: black;
-  /* box-shadow: 1px 3px 10px #f2a43a */
+  background-color:  orange;
+  color: white;
 }
 .OtherUsers {
   padding-bottom: .3em;
@@ -205,14 +209,12 @@ html {
   max-width: 60vw;
   background-color: #e9e9e9;
   color: black;
-  /* box-shadow: 1px 1px 10px black */
 }
 .bottomline {
     display:block;
     border:none;
     color:white;
     height:1px;
-    background:black;
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#000), to(#fff));
 }
 </style>

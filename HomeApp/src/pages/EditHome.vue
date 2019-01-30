@@ -24,8 +24,6 @@ export default {
       EditHome: []
     }
   },
-  methods: {
-  },
   created () {
     axios.get('http://localhost:3002/house/1')
       .then(res => (this.EditHome = res.data.sort()))

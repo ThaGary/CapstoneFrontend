@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
 .paid {
-    background-color: lightgreen;
+    background-color: green;
     color: white;
 }
 .unpaid {

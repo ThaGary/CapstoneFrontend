@@ -5,7 +5,7 @@
         src="~assets/capstonelogo.svg"
       >
     </p>
-    <h1 class="animated pulse">HomeApp</h1>
+    <h1 class="animated pulse">RoomEase</h1>
     <div class="col-10 q-mx-xl">
         <div class="q-mt-xs buttons row justify-center">
             <q-btn class="animated bounce signup q-ma-md col-4" color="amber-8" label="Sign Up" @click="$router.push('/name')"/>

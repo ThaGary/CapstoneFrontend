@@ -4,33 +4,33 @@
       <q-toolbar color="amber-8">
         <img  alt="Capstone logo" src="~assets/whitelogo.svg">
         <q-toolbar-title>
-          HomeApp
+          RoomEase
         </q-toolbar-title>
-        <q-item>
-        <q-btn flat class="animated tada" round dense icon="chat" @click="$router.push('/chat')"/>
-        </q-item>
-        <q-btn flat round dense icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
-        <q-layout-drawer side="right" v-model="rightDrawerOpen">
-          <q-list-header>HomeApp</q-list-header>
-            <q-item @click.native="$router.push('/chat')">
-              <q-item-side icon="group" />
-              <q-item-main label="Chat" sublabel="Chat" />
-            </q-item>
-              <q-item @click.native="$router.push('/edithome')">
-                <q-item-side icon="settings" />
-                <q-item-main label="Settings" sublabel="Settings" />
-              </q-item>
-              <q-item @click.native="$router.push('/')">
-                <q-item-side icon="exit_to_app" />
-                <q-item-main label="Logout" sublabel="Logout" />
-              </q-item>
-        </q-layout-drawer>
       </q-toolbar>
     </q-layout-header>
-
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-layout-footer class="animated slideInUp" v-model="footer">
+          <q-toolbar class="items-center justify-between" color="amber-8">
+            <q-btn size="md" flat color="white" icon="settings" class="animated tada" @click.native="$router.push('/edithome')">
+            </q-btn>
+            <q-btn size="md" flat color="white" icon="chat" class="animated tada" @click.native="$router.push('/chat')">
+            </q-btn>
+            <q-btn size="md" color="white" icon="exit_to_app" flat class="animated tada" @click="minimizedModal=!minimizedModal">
+            </q-btn>
+            <q-modal v-model="minimizedModal" minimized>
+              <div style="padding: 50px">
+                  <div class="title text-bold q-mx-md">Are you sure you want to logout?
+                  </div>
+                  <div class="buttons q-mt-md justify-center row">
+                      <q-btn class="q-ma-xs col-3" color="red" v-close-overlay label="LogOut" @click.native="$router.push('/')" />
+                      <q-btn class="q-ma-xs col-3" color="amber-7" v-close-overlay label="Cancel" />
+                  </div>
+              </div>
+            </q-modal>
+          </q-toolbar>
+      </q-layout-footer>
   </q-layout>
 </template>
 
@@ -41,7 +41,7 @@ export default {
   name: 'MyLayout',
   data () {
     return {
-      rightDrawerOpen: this.$q.platform.is.desktop
+      minimizedModal: false
     }
   },
   methods: {

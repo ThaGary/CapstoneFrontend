@@ -6,7 +6,7 @@
             </h6>
             <div class="q-mt-md column justify-center" v-for="post of bulletin" :key="post.id">
                 <button class="bigger col-12 row justify-center q-mt-sm" @click="setFormData(post.id, post.title, post.entry, post.house_id), minimizedModal1=!minimizedModal1">
-                <q-card class="col-10 bigger q-mt-sm" inline color="amber-7">
+                <q-card class="col-8 bigger q-mt-sm" inline color="amber-7">
                     <q-card-title class="relative-position">
                         <div class="ellipsis">{{ post.title }}</div>
                     </q-card-title>

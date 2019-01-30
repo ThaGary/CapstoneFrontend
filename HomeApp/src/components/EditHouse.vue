@@ -71,7 +71,7 @@
                     Number of Housemates: {{ EditHome[0].number_housemates }}
                 </h3>
                 </span>
-                  <q-slider :@click="putHousemates(EditHome[0].house_id, EditHome[0].number_housemates)" class="col-10" color="amber-7" v-model="EditHome[0].number_housemates" :min="0" :max="10" :step="1" label snap markers />
+                  <q-slider :@click="putHousemates(EditHome[0].house_id, EditHome[0].number_housemates)" class="col-8" color="amber-7" v-model="EditHome[0].number_housemates" :min="0" :max="10" :step="1" label snap markers />
             </div>
         </div>
     </div>
